@@ -5,8 +5,81 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Drinks_Machine_Program"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Drinks Machine" Height="450" Width="800">
     <Grid>
+        <!-- Make grids representing layout of the UI -->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
 
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <Label Grid.Column="0" Grid.Row="0" FontSize="20" FontWeight="DemiBold">Coin Information</Label>
+        <Label Grid.Column="0" Grid.Row="3" FontSize="20" FontWeight="DemiBold">Products Information</Label>
+
+        <!--    Money Input     -->
+        <StackPanel Grid.Column="0" Grid.Row="1">
+            <Label FontSize="20" FontWeight="DemiBold" HorizontalAlignment="Center">Penny</Label>
+            <TextBox Height="38" Width="68" BorderThickness="2.9" BorderBrush="Black" HorizontalAlignment="Center" Name="cents_txtbox"></TextBox>
+        </StackPanel>
+
+        <StackPanel Grid.Column="1" Grid.Row="1">
+            <Label FontSize="20" FontWeight="DemiBold" HorizontalAlignment="Center">Nickel</Label>
+            <TextBox  Height="38" Width="68" BorderThickness="2.9" BorderBrush="Black" HorizontalAlignment="Center" Name="nickel_txtbox"></TextBox>
+        </StackPanel>
+
+        <StackPanel Grid.Column="2" Grid.Row="1">
+            <Label FontSize="20" FontWeight="DemiBold" HorizontalAlignment="Center">Dime</Label>
+            <TextBox  Height="38" Width="68" BorderThickness="2.9" BorderBrush="Black" HorizontalAlignment="Center" Name="dime_txtbox"></TextBox>
+        </StackPanel>
+
+        <StackPanel Grid.Column="3" Grid.Row="1" >
+            <Label FontSize="20" FontWeight="DemiBold" HorizontalAlignment="Center">Quarter</Label>
+            <TextBox  Height="38" Width="68" BorderThickness="2.9" BorderBrush="Black" HorizontalAlignment="Center" Name="quarter_txtbox"></TextBox>
+        </StackPanel>
+
+        <!--    Drink Input     -->
+        <StackPanel Grid.Column="0" Grid.Row="4" Orientation="Horizontal">
+            <StackPanel Margin="15">
+                <TextBlock Text="Coke" FontSize="20" FontWeight="DemiBold"/>
+                <TextBlock Text="Some Text here" Name="cokeQuantity"/>
+            </StackPanel>
+            <TextBox Text="{Binding Path=CokeQuantity, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Height="38" Width="68" BorderThickness="2.9" BorderBrush="Black" Name="CokeRequested" ></TextBox>
+        </StackPanel>
+
+        <StackPanel Grid.Column="0" Grid.Row="5" Orientation="Horizontal">
+            <StackPanel  Margin="15">
+                <TextBlock Text="Pepsi" FontSize="20" FontWeight="DemiBold"/>
+                <TextBlock Text="Some Text here" Name="pepsiQuantity"/>
+            </StackPanel>
+            <TextBox Text="{Binding Path=PepsiQuantity, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Height="38" Width="68" BorderThickness="2.9" BorderBrush="Black" HorizontalAlignment="Center" Name="PepsiRequested"></TextBox>
+        </StackPanel>
+
+        <StackPanel Grid.Column="0" Grid.Row="6" Orientation="Horizontal">
+            <StackPanel  Margin="15">
+                <TextBlock Text="Soda" FontSize="20" FontWeight="DemiBold"/>
+                <TextBlock Text="Some Text here" Name="sodaQuantity"/>
+            </StackPanel>
+            <TextBox Text="{Binding Path=SodaQuantity, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Height="38" Width="68" BorderThickness="2.9" BorderBrush="Black" HorizontalAlignment="Center" Name="SodaRequested"></TextBox>
+        </StackPanel>
+
+        <StackPanel Grid.Column="2" Grid.Row="5" Orientation="Horizontal" VerticalAlignment="Center">
+            <TextBlock Text="Order Total: " FontSize="20" FontWeight="DemiBold"/>
+            <TextBlock Text="$ " FontSize="20" FontWeight="DemiBold"/>
+            <TextBlock Text="{Binding Path=TotalValue, Mode=TwoWay}" VerticalAlignment="Center"/>
+        </StackPanel>
+        
+        <Button Grid.Column="3" Grid.Row="6" Click="ButtonGetDrinks_Click" Name="GetDrinksButton">Get Drinks</Button>
     </Grid>
 </Window>
